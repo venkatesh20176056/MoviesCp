@@ -1,0 +1,14 @@
+{% extends "_base1.html" %}
+{% block content%}
+<table>
+		<tr>
+	    <th>USER_NAME</th>
+	    
+	  </tr>
+	{% for row in send %}
+	<tr onclick="window.location.href='{{ url_for( 'project_admin',nam = row[0]) }}';">
+	   <TD class="c1"><pre>{{ row[0] }}</pre></TD>
+	</tr>
+	{% endfor %}
+	</table>
+{% endblock %}

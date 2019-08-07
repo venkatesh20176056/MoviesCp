@@ -1,0 +1,20 @@
+{% extends "description-template.html" %}
+	{% block head%}
+		{{ super() }}
+		<style>
+			#rcorners2 {
+						  box-sizing: border-box;
+						  padding: 5px; 
+						}
+		</style>
+	{% endblock%}
+
+ 	{% block msg %}
+
+	<div class="row" id="rcorners2">
+		<div class="col-sm-12 text-center">
+			<strong>{{ message }}</strong>
+		</div>
+	</div>
+	{% endblock%}
+

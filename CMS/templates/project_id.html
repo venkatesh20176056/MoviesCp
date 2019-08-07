@@ -1,0 +1,70 @@
+{% extends "_base.html" %}
+{% block table_style %}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+{% endblock %}
+{% block content %}
+
+  <table>
+		
+	    <tr><th>PROJECT_ID  	<pre>{{ send[1] }}</pre></th></tr>
+	    <tr><th>NAME  			<pre>{{ send[2] }}</pre></th></tr>
+	    <tr><th>DESCRIPTION  	<pre>{{ send[3] }}</pre></th></tr>
+	    <tr><th>PURPOSE  		<pre>{{ send[4] }}</pre></th></tr>
+	    <tr><th>TEAMS			<pre>{{ send[5] }}</pre></th></tr>
+	    <tr><th>TIME_STAMP		<pre>{{ send[6] }}</pre></th></tr>
+	  
+	</table>
+	<button class="button" onclick="window.location.href='{{ url_for( 'delete_project', variable = send[1]) }}';">DELETE-PROJECT</button>
+    {% include "add_config_modal.html" %}
+{% if data|length == 0 %}
+<center>
+	<b>
+	{{ "there are currently NO CONFIGS" }}
+	</b>
+</center>
+
+{% else %}
+    <table>
+		<tr>
+	    <th>PROJECT_ID</th>
+	    <th>CONFIG_ID</th>
+	    <th>NAME</th>
+	    <th>DESCRIPTION</th>
+	    <th>MAINTAINER</th>
+	    <th>FILE_PATH</th>
+	    <th>EXTENSION</th>
+	    <th>FILE_TYPE</th>
+	    <th>KEY_COLUMNS</th>
+	    <th>VALUE_COLUMNS</th>
+	  </tr>
+	{% for row in data %}
+	<tr onclick="window.location.href='{{ url_for( 'config', variable1 = row[1],variable2 = row[2]) }}';">
+	   <TD class="c1">{{ row[1] }}</TD>
+	   <TD class="c2">{{ row[2] }}</TD>
+	   <TD class="c3">{{ row[3] }}</TD>
+	   <TD class="c4">{{ row[4] }}</TD>
+	   <TD class="c5">{{ row[5] }}</TD>
+	   <TD class="c6">{{ row[6] }}</TD>
+	   <TD class="c3">{{ row[7] }}</TD>
+	   <TD class="c4">{{ row[8] }}</TD>
+	   <TD class="c5">{{ row[9] }}</TD>
+	   <TD class="c6">{{ row[10] }}</TD>
+	</tr>
+	{% endfor %}
+	</table>
+{% endif %}
+{% endblock %}

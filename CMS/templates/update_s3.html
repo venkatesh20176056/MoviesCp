@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+{% block head %}
+<style >
+	input[type=text], select {
+              width: 80%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+            }
+</style>
+{% endblock %}
+
+{% block content %}
+<center>
+<form method = "POST">
+<p><b><font size="+2" color="red">Update_s3 for Project-ID: {{pid}} Config-ID: {{cid}}</font></b></p>
+<br>
+	
+<p><b><font size="+2">Enter Bucket Name</font></b></p>
+<input type="text" name="Bucket_name" required>
+
+<p><b><font size="+2">Enter Key Folder Name with '/' at end</font></b></p>
+<input type="text" name="Folder_name" required>
+
+<input type = "submit" class = "button" value="Update_s3"/>
+</form>
+</center>
+{% endblock %}

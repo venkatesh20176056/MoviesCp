@@ -1,0 +1,54 @@
+{% extends "_base1.html" %}
+
+{% block table_style %}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+{% endblock %}
+
+{% block content %}
+{% if data|length == 0 %}
+<center>
+	<b>
+	{{ "there are currently NO PROJECTS" }}
+	</b>
+</center>
+
+{% else %}
+	<table>
+		<tr>
+		<th>USER_NAME</th>
+	    <th>PROJECT_ID</th>
+	    <th>NAME</th>
+	    <th>DESCRIPTION</th>
+	    <th>PURPOSE</th>
+	    <th>TEAMS</th>
+	    <th>TIME_STAMP</th>
+	  </tr>
+	{% for row in data %}
+	<tr onclick="window.location.href='{{ url_for( 'project_id_admin', nam = pro, variable = row[1]) }}';">
+	   <TD class="c1">{{ row[0] }}</TD>
+	   <TD class="c2">{{ row[1] }}</TD>
+	   <TD class="c3">{{ row[2] }}</TD>
+	   <TD class="c4">{{ row[3] }}</TD>
+	   <TD class="c5">{{ row[4] }}</TD>
+	   <TD class="c6">{{ row[5] }}</TD>
+	   <TD class="c7">{{ row[6] }}</TD>
+	</tr>
+	{% endfor %}
+	</table>
+{% endif %}
+{% include 'add_project_modal.html' %}
+{% endblock %}

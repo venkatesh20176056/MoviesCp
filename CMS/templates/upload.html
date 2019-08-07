@@ -1,0 +1,93 @@
+{% extends "_base.html" %}
+
+
+
+
+{% block content %}
+
+<center>
+
+	
+	<h1>UPLOAD FILE</h1>
+	<br>
+	<font color="red" size="+2"><b>{{ message }}</b></font>
+	<div>
+	<form method = "POST" enctype="multipart/form-data"> 
+		<font color="black" size="+1"><b>Name</b></font>
+            <br><input type="text" name="Name" size=30 id = 'Name' required></br>
+            <font color="black" size="+1"><b>Description</b></font>
+            <br><input type="text" name="Description" size=30 id = 'Description' required></br>
+            <font color="black" size="+1"><b>Maintainer</b></font>
+            <br><input type="text" name="Maintainer" size=30 id = 'Teams' required></br>
+
+            <div id = "container" style = "width:100%">
+            <div id ="left" style = "float:left; width: 25%;">
+            <font color="black" size="+1"><b>Choose the EXTENSION</b></font>
+            <br>
+            <center>
+            <input type="checkbox" class="example" value="CSV" name="select_ext"/><font color="red" size="+1" required ><b>CSV</b></font><br>
+			<input type="checkbox" class="example" value="TSV" name="select_ext"/><font color="red" size="+1" required ><b>TSV</b></font><br>
+			 </center>
+			</div>
+			<div id = "middle" style = "float:left; width: 25%;">
+			<font color="black" size="+1"><b>Which type of file is it???</b></font>
+            <br>
+		       <input type="checkbox" class="select" value="Range File" name="select_type"/><font color="red" size="+1" required><b>Range File</b></font><br>
+				<input type="checkbox" class="select" value="Value File" name="select_type"/><font color="red" size="+1" required><b>Value File</b></font><br>
+			</div>
+			<div id = "right" style = "float:left; width: 25%;">
+				<font color="black" size="+1"><b>Enter Key Columns</b></font>
+            	<br><input type="text" name="Key" size=30 id = 'Key' required></br>
+            </div>
+            <div id = "right" style = "float:left; width: 25%;">
+            	<font color="black" size="+1"><b>Enter Value Columns</b></font>
+            	<br><input type="text" name="Value" size=30 id = 'Value' required></br>
+    		</div>
+			</div>
+	<center>
+		<input type = "file" class = "button" name = "file" />
+	 		
+	</center>
+	<input type = "submit" class = "button" value="UPLOAD" id="checkBtn"/>	 
+	</form>
+	</div>
+</center>
+
+<script>
+$('input[type=file]').change(function () {
+    console.log(this.files[0].mozFullPath);
+});
+	
+	$('input.example').on('change', function() {
+    $('input.example').not(this).prop('checked', false);  
+});
+
+$('input.select').on('change', function() {
+    $('input.select').not(this).prop('checked', false);  
+});
+
+$(document).ready(function () {
+    $('#checkBtn').click(function() {
+      checked = $("input[class=example]:checked").length;
+
+      if(!checked) {
+        alert("You must check either CSV or TSV.");
+        return false;
+      }
+
+    });
+});
+
+$(document).ready(function () {
+    $('#checkBtn').click(function() {
+      checked = $("input[class=select]:checked").length;
+
+      if(!checked) {
+        alert("You must check either RANGE_FILE or VALUE_FILE.");
+        return false;
+      }
+
+    });
+});
+</script>
+{% endblock %}

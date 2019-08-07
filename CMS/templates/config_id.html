@@ -1,0 +1,17 @@
+{% extends "_base.html" %}  
+{% block content %}
+	<table>
+		
+	    <tr><th>PROJECT_ID  	<pre>{{ send[1] }}</pre></th></tr>
+	    <tr><th>CONFIG_ID  			<pre>{{ send[2] }}</pre></th></tr>
+	    <tr><th>NAME  	<pre>{{ send[3] }}</pre></th></tr>
+	    <tr><th>DESCRIPTION 		<pre>{{ send[4] }}</pre></th></tr>
+	    <tr><th>MAINTAINER			<pre>{{ send[5] }}</pre></th></tr>
+	    <tr onclick="window.location.href='{{ url_for( 'show_csv', variable1 = send[1],variable2 = send[2]) }}';"><th>FILE_PATH		<pre>{{ send[6] }}</pre></th></tr>
+	  	<tr><th>EXTENSION 	<pre>{{ send[7] }}</pre></th></tr>
+	    <tr><th>FILE_TYPE 		<pre>{{ send[8] }}</pre></th></tr>
+	    <tr><th>KEY_COLUMNS			<pre>{{ send[9] }}</pre></th></tr>
+	    <tr><th>VALUE_COLUMNS		<pre>{{ send[10] }}</pre></th></tr>
+	</table>
+	<button class="button" onclick="window.location.href='{{ url_for( 'delete_config', variable1 = send[1],variable2 = send[2]) }}';">DELETE-CONFIG</button>
+{% endblock %}
