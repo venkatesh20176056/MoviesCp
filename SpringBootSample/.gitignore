@@ -1,8 +1,11 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+
+# Don't track content of the following
+!.mvn/wrapper/maven-wrapper.jar
+
 
 ### STS ###
 .apt_generated
